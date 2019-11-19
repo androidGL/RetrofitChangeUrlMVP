@@ -15,14 +15,17 @@ import retrofit2.http.POST;
 import retrofit2.http.Query;
 
 public interface Api {
-    public static final String BASEURL = "https://api.apiopen.top";//测试api
-    public static final String BASEURL2 = "https://api.apiopen.second";//测试api，错误的
+    //成员变量,默认修饰符 public static final
+    //成员方法,默认修饰符 public abstract
+    String BASEURL = "https://api.apiopen.top";//测试api
+    String BASEURL2 = "https://api.apiopen.second";//测试api，错误的
 
     //header中添加 URL_KEY，表示这个请求是需要替换BaseUrl的
-    public static final String URL_KEY = "URL_KEY";
+    String URL_KEY = "URL_KEY";
     //header中的value值，用于区分需要替换的BaseUrl是哪一个
-    public static final String URL_VALUE_SECOND = "URL_VALUE_SECOND";
-    // RetrofitUrlManager.getInstance().putDomain(Api.URL_VALUE_SECOND,"https://new.address.com");
+    String URL_VALUE_SECOND = "URL_VALUE_SECOND";
+    //这儿添加Headers是为了修改BaseURL的，key用于识别是不是需要修改BaseURL，value用来识别需要修改哪个BaseURL
+    //使用时只需要在网络请求前添加： RetrofitUrlManager.getInstance().putDomain(Api.URL_VALUE_SECOND,"https://new.address.com");
     @Headers({URL_KEY+":"+URL_VALUE_SECOND})
     @POST("login")
     Single<NetResponse<UserInfo>> login(@Query("name") String key);

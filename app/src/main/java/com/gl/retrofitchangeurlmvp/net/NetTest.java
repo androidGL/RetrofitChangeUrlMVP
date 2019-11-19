@@ -11,7 +11,13 @@ import java.util.HashMap;
 public class NetTest {
     private static HashMap<String, String> apiResponse = new HashMap<>();
 
+    /**
+     * 判断这个URL是不是需要拦截，如果需要拦截就返回interceptApi，即apiResponse的key值
+     * @param apiName 需要拦截的URL
+     * @return
+     */
     public static String isExist(String apiName) {
+        //初始化apiResponse，添加键值对
         init();
         for (String interceptApi : apiResponse.keySet()) {
             if (apiName.contains(interceptApi)) {
@@ -21,8 +27,12 @@ public class NetTest {
         return null;
     }
 
+    /**
+     * 根据键值对获取需要替换的响应值
+     * @param apiName
+     * @return
+     */
     public static String getVisualResponseByApi(String apiName) {
-
         return apiResponse.get(apiName);
     }
 
@@ -30,9 +40,7 @@ public class NetTest {
         if (apiResponse.size() > 0) {
             return;
         }
-        apiResponse.put("searchAuthors", "{\"result\":\"000000\",\"msg\":\"调用成功\",\"data\":{\"userid\":\"TY6XFGLSUICQ2\",\"empno\":\"Y6XFGLSUICQ2\",\"userName\":\"18938856298\",\"sex\":\"未知\",\"status\":\"普通群员\",\"idType\":\"身份证\",\"empIdNo\":\"不详\",\"mobileNo\":\"18938856298\",\"homeAddr\":null,\"claimBankNo\":null,\"accountNo\":null,\"wechat\":\"微信\",\"occupation\":null,\"nickname\":\"昵称\"}}");
         apiResponse.put("register", "{\"status\":1,\"msg\":\"调用成功\",\"data\":{\"userId\":\"20191118\",\"userType\":0,\"userBirthYear\":1994,\"userName\":\"王二小\",\"userStature\":\"185cm\",\"userWeight\":\"50kg\"}}");
         apiResponse.put("login", "{\"status\":1,\"msg\":\"调用成功\",\"data\":{\"userId\":\"20191118\",\"userType\":0,\"userBirthYear\":1994,\"userName\":\"王二小\",\"userStature\":\"185cm\",\"userWeight\":\"50kg\"}}");
-//        apiResponse.put(CMUApi.ABOUT_MONEY, "{\"result\":\"000000\",\"msg\":\"调用成功\",\"data\":{\"userid\":\"TY6XFGLSUICQ2\",\"empno\":\"Y6XFGLSUICQ2\",\"userName\":\"18938856298\",\"sex\":\"未知\",\"status\":\"普通群员\",\"idType\":\"身份证\",\"empIdNo\":\"不详\",\"mobileNo\":\"18938856298\",\"homeAddr\":null,\"claimBankNo\":null,\"accountNo\":null,\"wechat\":\"微信\",\"occupation\":null,\"nickname\":\"昵称\"}}");
     }
 }

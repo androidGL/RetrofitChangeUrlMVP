@@ -17,15 +17,13 @@ import io.reactivex.schedulers.Schedulers;
  * @Description:
  */
 public class MainModel implements MainContract.Model {
-    @Override
-    public String getdata() {
-        return null;
-    }
 
     @Override
-    public DisposableSingleObserver<NetResponse<UserInfo>> login(String s, DisposableSingleObserver<NetResponse<UserInfo>> observer) {
-        RetrofitUrlManager.getInstance().putDomain(Api.URL_VALUE_SECOND,Api.BASEURL2);
-        return RetrofitHelper.getInstance()
+    public void login(String s, DisposableSingleObserver<NetResponse<UserInfo>> observer) {
+        //下面这行主要是用来修改baseURL的，如果不需要可以不加的
+        //第一个参数表示要修改哪个网络请求的BaseURL，第二个参数表示要修改成什么样的URL
+        RetrofitUrlManager.getInstance().putDomain(Api.URL_VALUE_SECOND, Api.BASEURL2);
+        RetrofitHelper.getInstance()
                 .getRetrofit()
                 .create(Api.class)
                 .login(s)

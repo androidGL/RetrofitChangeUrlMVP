@@ -20,7 +20,7 @@ import okhttp3.Response;
 /**
  * @Author: gl
  * @CreateDate: 2019/11/15
- * @Description:
+ * @Description: 修改BaseURL的工具类
  */
 public class RetrofitUrlManager {
     private static final String TAG = "RetrofitUrlManager";
